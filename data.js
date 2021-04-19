@@ -110,7 +110,17 @@ const container = document.querySelector('.icons');
 const coloredIcons = colorIcons(icons, colors);
 printIcons(coloredIcons, container);
 
-
+// 3 filter icons
+// A gen select options
+const select = document.querySelector('#type');
+const types = getType(coloredIcons);
+genOption(types, select);
+// B filter on change
+select.addEventListener('change', () => {
+    const selected = select.value;
+    filtredIcons = filterIcons(coloredIcons, selected);
+    printIcons(filtredIcons, container);
+})
 
 
 
@@ -155,7 +165,7 @@ function colorIcons(icons, colors){
     return coloredIcons;
 };
 
-// get icons type (unique)
+// 0 get icons type (unique)
 function getType(icons){
     const types =[];
     icons.forEach((icon) =>{
@@ -164,4 +174,25 @@ function getType(icons){
         }
     }) 
     return(types);
+}
+
+// 3 gen option for filter
+function genOption(types, select){
+    //gen option
+    let options = '';
+    types.forEach((type) =>{
+        options += `<option value="${type}">${type}</option>`;
+    })
+    select.innerHTML += options;
+};
+
+// filter icon set
+function filterIcons(coloredIcons, selected){
+    if(selected === 'All'){
+        return icons;
+    }
+    const filtered = coloredIcons.filter((icon)=>{
+        return icon.type === selected;
+    })
+    return filtered;
 }
