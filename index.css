@@ -73,7 +73,7 @@ body{
     align-content: flex-start;
     flex-wrap: wrap;
     padding: 20px 10px;
-    background: #f5c9d2;
+    background: #f582ae;
 }
 .icons .icon{
     flex-basis: calc(100% / 6 - 20px);
