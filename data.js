@@ -96,3 +96,38 @@ const icons = [
         family: 'fas',
     },
 ];
+
+const container = document.querySelector('.icons');
+//console.log(container);
+
+// 1 printare le icone a schermo
+printIcons(icons, container);
+
+
+
+
+
+
+
+
+
+// funzioni
+
+// 1 printare le icone a schermo
+function printIcons(icons, container){
+    // generara il markup per le icone
+    let html = '';
+    icons.forEach((icon) =>{
+        //console.log(ikon);
+        const {family, prefix, name} = icon;
+        html += 
+        `<div class="icon p-20">
+            <i class="${family} ${prefix}${name} p-20" 
+            style="color: #333"></i>
+            <div class="titel">${name}</div>
+        </div>
+        `
+    });
+    // aggiunta icone al container
+    container.innerHTML = html;
+}
